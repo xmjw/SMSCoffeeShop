@@ -1,0 +1,35 @@
+<div class="stat">
+	<span class="number"><%= @status[:customers] %></span>
+	<p>Total Customers</p>
+</div>
+
+<div class="stat">
+	<span class="number"><%= @status[:total_orders] %></span>
+	<p>Total Orders</p>
+</div>
+
+<div class="stat">
+	<span class="number"><%= @status[:fulfilled] %></span>
+	<p>Total Complete</p>
+</div>
+
+<div class="stat">
+	<span class="number"><%= @status[:unfulfilled] %></span>
+	<p>Total Waiting</p>
+</div>
+
+<div class="stat">
+	<span class="number"><%= @status[:delivered] %></span>
+	<p>Total Delivered</p>
+</div>
+
+<div class="stat">
+	<span class="number"><%= @status[:cancelled] %></span>
+	<p>Total Cancelled</p>
+</div>
+
+<div class="stat">
+	<span class="number"><%= @status[:delivered] / @status[:customers] %></span>
+	<p>Average Cups/Customer</p>
+</div>
+
