@@ -1,4 +1,4 @@
-<script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
+<script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 var pusher = new Pusher('<%= ENV['PUSHER_KEY'] %>');
@@ -7,7 +7,7 @@ var pusher = new Pusher('<%= ENV['PUSHER_KEY'] %>');
   channel.bind('order', function(data) {
   title = document.createElement('div');
   $(title).addClass('title');
-  $(title).text(+data.id': '+data.product);
+  $(title).text(+data.id+': '+data.product);
 
   message = document.createElement('div');
   $(message).addClass('message');
