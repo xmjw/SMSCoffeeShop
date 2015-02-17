@@ -32,8 +32,8 @@ class Order
         :options => {}
       },
       {
-        :corruptions => %w(cappacino capacino cappacino cappocino capocino capacino),
-        :standard_name => "Cappucino",
+        :corruptions => %w(cappacino capacino cappacino cappocino capocino capacino cappucino cappuccino),
+        :standard_name => "Cappuccino",
         :options => {}
       },
       {
@@ -85,7 +85,7 @@ class Order
 
   def extract_order
     is_valid = false
-
+    puts self.raw
     Order.options.each do |drink|
       drink[:corruptions].each do |spelling|
         if self.raw.include? spelling
