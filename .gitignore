@@ -1,5 +1,5 @@
 *.swp
 tmp
-env.rb
 .env
-
+.env.test
+.ruby-version

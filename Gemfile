@@ -9,5 +9,5 @@ gem 'dm-postgres-adapter'
 gem 'dm-timestamps'
 gem 'pusher'
 
+gem 'foreman', :group => :development
 gem 'rack-test', :group => :test
-gem 'dotenv-rails', :group => :test

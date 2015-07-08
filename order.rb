@@ -32,11 +32,11 @@ class Order
         :options => {}
       },
       {
-        :corruptions => %w(cappacino capacino cappacino cappocino capocino capacino),
-        :standard_name => "Cappucino",
-				:options => {}
+        :corruptions => %w(cappacino capacino cappacino cappocino capocino capacino cappucino cappuccino),
+        :standard_name => "Cappuccino",
+        :options => {}
       },
-      { 
+      {
         :corruptions => %w(late lattey larte lartte lartay lattee latte cafe\ late caffee\ latte cafee\ late cafee\ late cafe\ latte caffe\ latte caffè\ latte),
         :standard_name => "Caffè Latte",
         :options => {}
@@ -62,43 +62,43 @@ class Order
         :options => {}
       }
     ]
-  end	
+  end
 
-  def self.options_list 
-	  #Creates a nice list of the possible options so we can change the above hash at will, or get it from another file.
-		drinks = options.collect {|opt| opt[:standard_name]}
+  def self.options_list
+    #Creates a nice list of the possible options so we can change the above hash at will, or get it from another file.
+    drinks = options.collect {|opt| opt[:standard_name]}
     drinks[0...-1].inject(""){|str,item| str = "#{str}#{item}, "} + "and #{drinks.last}"
-	end
+  end
 
   def valid_order
     if extract_order
       true
-		else
+    else
       self.fulfilled = true
-			self.time = DateTime.now
-			save
-			false
-		end
-	end
+      self.time = DateTime.now
+      save
+      false
+    end
+  end
 
   private
 
-		def extract_order 
-			is_valid = false
-
-			Order.options.each do |drink|
-        drink[:corruptions].each do |spelling| 
-					if self.raw.include? spelling
-            is_valid = true
-				    self.standard_name = drink[:standard_name]
-				    self.fulfilled = false
-				    self.time = DateTime.now
-					end
-			  end	
+  def extract_order
+    is_valid = false
+    puts self.raw
+    Order.options.each do |drink|
+      drink[:corruptions].each do |spelling|
+        if self.raw.include? spelling
+          is_valid = true
+          self.standard_name = drink[:standard_name]
+          self.fulfilled = false
+          self.time = DateTime.now
+        end
       end
+    end
 
-			is_valid
-		end
+    is_valid
+  end
 end
 
 
